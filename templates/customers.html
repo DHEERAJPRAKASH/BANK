@@ -1,0 +1,103 @@
+{% load static %}
+<link href="{% static 'css/dom.css' %}" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUSTOMERS</title>
+
+    <style>
+        body {
+            background-image: url('/static/BACKGROUND_6.jpg');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .title {
+            display: flex;
+            /* float:inline-start; */
+            padding: 0.25rem 30rem;
+            font-weight: bold;
+            font-size: 2rem;
+            text-align: center;
+            justify-content: center;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid rgb(211, 31, 31);
+            text-align: left;
+            font-size: 1.5rem;
+        }
+
+        th {
+            background-color: gold;
+            /* font-size: 2rem; */
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 15px;
+        }
+
+        td{
+            background-color: antiquewhite;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'customer:customer_list' %}">Customers</a></li>
+                <li><a href="{% url 'customer:history' %}">History</a></li>
+                <li><a href="#">Contact us</a></li>
+                <div class="search">
+                    <input type="text" name="search" id="search" placeholder="Search this website">
+                </div>
+            </ul>
+        </nav>
+
+    </header>
+    <div class="title">
+        <p style="
+        color: blue;">CUSTOMER LIST</p>
+    </div>
+    <div class="cust" id="customers">
+        <table>
+            <tr height="100px">
+                <th>CUSTOMER ID</th>
+                <th>CUSTOMER NAME</th>
+                <th>EMAIL</th>
+                <th>BALANCE</th>
+            </tr>
+            {% for customer in customer_list%}
+            <tr id="hai" height="100px">
+                <td>{{customer.idd}}</td>
+                <td><a href="{% url 'customer:profile' customer.id %}"
+                        style="color: inherit; text-decoration: none;">{{customer.name}}</a></td>
+                <td><a href="{% url 'customer:profile' customer.id %}"
+                        style="color: inherit; text-decoration: none;">{{customer.email}}</a>
+                </td>
+                <td><a href="{% url 'customer:profile' customer.id %}"
+                        style="color: inherit; text-decoration: none;">{{customer.balance}}</a></td>
+            </tr>
+
+            {% endfor%}
+        </table>
+    </div>
+</body>
+
+</html>
