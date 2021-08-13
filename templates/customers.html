@@ -19,7 +19,7 @@
         .title {
             display: flex;
             /* float:inline-start; */
-            padding: 0.25rem 30rem;
+            /* padding: 0.25rem 30rem; */
             font-weight: bold;
             font-size: 2rem;
             text-align: center;
@@ -52,6 +52,25 @@
         td{
             background-color: antiquewhite;
         }
+
+        @media (max-width: 768px) {
+            /* .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            } */
+
+            .navbar {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .search {
+                display: none;
+            }
+            
+            
+        }
         
     </style>
 </head>
@@ -75,7 +94,7 @@
         <p style="
         color: blue;">CUSTOMER LIST</p>
     </div>
-    <div class="cust" id="customers">
+    <div class="cust" id="customers" style="overflow-x:auto;">
         <table>
             <tr height="100px">
                 <th>CUSTOMER ID</th>

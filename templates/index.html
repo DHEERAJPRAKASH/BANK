@@ -13,7 +13,7 @@
 <style>
     body {
         background-image: url('/static/BACKGROUND_IMAGE2.jpg');
-        background-size: 100% 48rem;
+        background-size: 100% 100%;
         background-repeat: no-repeat;
     }
 
@@ -36,8 +36,33 @@
     .buttons li a{
     padding: 3px 3px;
     text-decoration:none;
-    ;
-}
+    }
+
+    .container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    @media (max-width: 768px) {
+      .buttons
+      {
+          background-color:rgb(240 255 70 / 75%);
+          border-radius:25px;
+      }
+      .search{
+          display:none;
+          visibility: hidden;
+      }
+      .navbar {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+    }
 </style>
 
 <body>
@@ -58,15 +83,15 @@
     </header>
     <div class="container">
         <p style="color: darkblue;">
-            WELCOME TO THE WORLD OF BANKING
+            WELCOME TO THE WORLD OF BANKING 
         </p>
     </div>
     <div class="buttons">
         <ul>
-            <li><a href="/" style="color:firebrick">Home</a></li>
-            <li><a href="{% url 'customer:customer_list' %}" style="color: darkblue">Customers</a></li>
-            <li><a href="{% url 'customer:history' %}" style="color: #2d00df">History</a></li>
-            <li><a href="{% url 'customer:customer_list' %}" style="color: #1a636e">Make Transaction</a></li>
+            <!-- <li><a href="/" style="color:firebrick">Home</a></li> -->
+            <li><a href="{% url 'customer:customer_list' %}" style="color: firebrick">Customers</a></li>
+            <li><a href="{% url 'customer:history' %}" style="color: darkblue">History</a></li>
+            <li><a href="{% url 'customer:customer_list' %}" style="color: #2d00df">Make Transaction</a></li>
             
         </ul>
     </div>

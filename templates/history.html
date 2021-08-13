@@ -2,81 +2,110 @@
 <link href="{% static 'css/dom.css' %}" rel="stylesheet">
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HISTORY</title>
 </head>
+
 <body>
     <style>
         body {
             background-image: url('/static/BACKGROUND_5.jpg');
-            background-size: 100% 48rem;
+            background-size: 100% 100%;
             background-repeat: no-repeat;
         }
+
         .title {
-            display:flex;
+            display: flex;
             /* float:inline-start; */
-            padding:0.25rem 30rem; 
+            /* padding: 0.25rem 30rem; */
             font-weight: bold;
             font-size: 2rem;
             text-align: center;
-            justify-content:center;
+            justify-content: center;
         }
-        table, td, th {  
-          border: 1px solid rgb(211, 31, 31);
-          text-align: left;
-          font-size: 1.5rem;
+
+        table,
+        td,
+        th {
+            border: 1px solid rgb(211, 31, 31);
+            text-align: left;
+            font-size: 1.5rem;
         }
-        
-        th{
+
+        th {
             background-color: gold;
             /* font-size: 2rem; */
         }
+
         table {
-          border-collapse: collapse;
-          width: 100%;
+            border-collapse: collapse;
+            width: 100%;
         }
-        
-        th, td {
-          padding: 15px;
+
+        th,
+        td {
+            padding: 15px;
         }
-        td{
+
+        td {
             background-color: antiquewhite;
         }
-        </style>
-</head>
 
-<body>
-    <header>
-        <nav class="navbar">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="{% url 'customer:customer_list' %}">Customers</a></li>
-                <li><a href="{% url 'customer:history' %}">History</a></li>
-                <li><a href="#">Contact us</a></li>
-                <div class="search">
-                    <input type="text" name="search" id="search" placeholder="Search this website">
-                </div>
-            </ul>
-        </nav>
-      
-    </header>
-    <div class="title">
-        <p style="
+        @media (max-width: 768px) {
+            /* .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            } */
+
+            .navbar {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .search {
+                display: none;
+            }
+            
+           
+        }
+    </style>
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{% url 'customer:customer_list' %}">Customers</a></li>
+                    <li><a href="{% url 'customer:history' %}">History</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <div class="search">
+                        <input type="text" name="search" id="search" placeholder="Search this website">
+                    </div>
+                </ul>
+            </nav>
+
+        </header>
+        <div class="title">
+            <p style="
         color: darkred;">TRANSFER HISTORY</p>
-    </div>
-    <div class="cust" id="customers">
-        <table>
-            <tr height="100px">
-                <th>TRANSFER ID</th>
-                <th>TIMESTAMP</th>
-                <th>SENDER</th>
-                <th>RECEIVER</th>
-                <th>AMOUNT</th>
-            </tr>
-            {% for transfer in transfer_history %}
+        </div>
+        <!-- style="overflow-x:auto;" -->
+        <div class="cust" id="customers" style="overflow-x:auto;" >
+            <table>
+                <tr height="100px">
+                    <th>TRANSFER ID</th>
+                    <th>TIMESTAMP</th>
+                    <th>SENDER</th>
+                    <th>RECEIVER</th>
+                    <th>AMOUNT</th>
+                </tr>
+                {% for transfer in transfer_history %}
                 <tr>
                     <td>{{transfer.id}}</td>
                     <td>{{transfer.timestamp}}</td>
@@ -84,9 +113,10 @@
                     </td>
                     <td>{{transfer.receiver}}</td>
                     <td>{{transfer.amount}}</td>
-                  </tr>
+                </tr>
                 {% endfor%}
-        </table>
-    </div>
-</body>
+            </table>
+        </div>
+    </body>
+
 </html>
